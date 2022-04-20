@@ -26,6 +26,12 @@ module.exports = {
   },
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+      },
+    ],
     quotes: [2, 'single', { avoidEscape: true, allowTemplateLiterals: true }],
     'import/extensions': [
       'error',
