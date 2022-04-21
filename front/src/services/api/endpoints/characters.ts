@@ -1,14 +1,15 @@
 import api from '../common/api-config';
 
-const EP_PATH = '/api/v1/characters';
+const EP_PATH = '/character/';
 
 /** Cahracters inforamtion */
 const characters = {
   /** Returns characters information */
-  get(params?) {
-    return api.get(EP_PATH, {
-      params,
-    });
+  getOne(params?: number) {
+    return api.get(EP_PATH + params);
+  },
+  getAll() {
+    return api.get(EP_PATH);
   },
 };
 
