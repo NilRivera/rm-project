@@ -29,7 +29,6 @@ type initialStateProps = {
 
 export const fetchCharacters = createAsyncThunk(charactersFetch, async () => {
   const { data: { results } } = await Api.characters.getAll();
-  console.log(results);
   return results;
 });
 

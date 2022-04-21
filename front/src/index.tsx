@@ -7,8 +7,7 @@ import store from './store/configureStore';
 import './index.css';
 import App from './App';
 
-export interface IAppProps {}
-const Index: React.FunctionComponent<IAppProps> = () => (
+const Index: React.FunctionComponent = () => (
   <Provider store={store}>
     <ThemeProvider theme={{}}>
       <BrowserRouter>
