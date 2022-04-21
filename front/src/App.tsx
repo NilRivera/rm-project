@@ -1,30 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCharacters, fetchCharacter } from './store/modules/characters';
+import { AppDispatch, RootState } from './store/configureStore';
+
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
+  const dispatch : AppDispatch = useDispatch();
+  const { characters, isLoading } = useSelector((state: RootState) => state.characters);
+  useEffect(() => {
+    dispatch(fetchCharacters());
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {' '}
-          <code>src/App.tsx</code>
-          {' '}
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div>
+      {isLoading ? <p>hello</p>
+        : (
+          <div>
+            {characters.map((element) => <div key={element.id}><button type="button" onClick={() => dispatch(fetchCharacter({ id: element.id }))}>{element.name}</button></div>)}
+          </div>
+        )}
     </div>
+
   );
-}
+};
 
 export default App;

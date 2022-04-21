@@ -1,13 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import { BrowserRouter } from 'react-router-dom';
+import store from './store/configureStore';
 import './index.css';
 import App from './App';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement,
+export interface IAppProps {}
+const Index: React.FunctionComponent<IAppProps> = () => (
+  <Provider store={store}>
+    <ThemeProvider theme={{}}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
+  </Provider>
 );
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-);
+
+const container = document.getElementById('root');
+const root:any = createRoot(container!);
+root.render(<Index />);
