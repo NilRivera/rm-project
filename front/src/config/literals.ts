@@ -7,6 +7,8 @@ const literals = {
   loading: 'Loading',
   showPassword: 'Show Password',
   hidePassword: 'Hide Password',
+  user: 'user',
+  list: 'list',
 };
 
 export default literals;
