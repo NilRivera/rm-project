@@ -1,28 +1,31 @@
+import { useLocation } from 'react-router-dom';
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCharacters, fetchCharacter } from './store/modules/characters';
-import { AppDispatch, RootState } from './store/configureStore';
-
+import GlobalStyle from './styles/global';
 import './App.css';
+import Router from './routes';
+import Header from './components/Header';
+import LogIn from './components/LogIn';
+import GlobalLayout from './pages/defaultLayout';
+import { useGetLocalStorage } from './utils/useGetLocalStorage';
 
-const App: React.FC = () => {
-  const dispatch : AppDispatch = useDispatch();
-  const { characters, isLoading } = useSelector((state: RootState) => state.characters);
-  useEffect(() => {
-    dispatch(fetchCharacters());
-  }, []);
+const PrivateRoutes = ({ children }:any):any => {
+  const location = useLocation();
+  const { user } = useGetLocalStorage('user', location);
+  useEffect(() => {}, [location]);
+  if (!user) {
+    return <GlobalLayout><LogIn /></GlobalLayout>;
+  }
   return (
-
-    <div>
-      {isLoading ? <p>hello</p>
-        : (
-          <div>
-            {characters.map((element) => <div key={element.id}><button type="button" onClick={() => dispatch(fetchCharacter({ id: element.id }))}>{element.name}</button></div>)}
-          </div>
-        )}
-    </div>
-
+    children
   );
 };
+
+const App: React.FunctionComponent<any> = () => (
+  <>
+    <GlobalStyle />
+    <Header />
+    <PrivateRoutes><Router /></PrivateRoutes>
+  </>
+);
 
 export default App;
