@@ -3,7 +3,10 @@ const theme = {
     white: '#FFFFFF',
     black: '#000000',
     grey: '#979797',
-    lightGrey: '#e0e0e0',
+    red: '#F13822',
+    green: '#3AA576',
+    lightGrey: { rgb: 'rgb(224, 224, 224, .8)', hex: '#e0e0e0' },
+    lightBlue: { rgb: 'rgb(75, 169, 190,.8)', hex: '#51AEC3' },
   },
   buttonHeight: {
     small: '30px',
