@@ -44,8 +44,10 @@ const characterSlice = createSlice({
   name: 'characters',
   initialState: iniState as initialStateProps,
   reducers: {
-    selectCharacter(state, action) {
-      state.selectedCharacter = action.payload;
+    selectCharacter(state, { payload }) {
+      const characters = JSON.parse(JSON.stringify(state.characters));
+      state = { ...state, selectedCharacter: characters[payload.id] };
+      return state;
     },
   },
   extraReducers: (builder) => {
