@@ -6,10 +6,11 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './store/configureStore';
 import './index.css';
 import App from './App';
+import theme from './styles/theme';
 
 const Index: React.FunctionComponent = () => (
   <Provider store={store}>
-    <ThemeProvider theme={{}}>
+    <ThemeProvider theme={theme}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
