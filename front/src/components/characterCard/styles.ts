@@ -4,13 +4,21 @@ export const CharacterCardContainer = styled.article`
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 700px;
+    width: ${({ isListView }) => (isListView ? '300px' : '700px')};
+    height: ${({ isListView }) => (isListView ? '300px' : '362px')};
     border-radius: 10px;
     padding: 20px;
     background: url(${(props) => props.background});
     background-size: cover;
-    margin-top: 100px;
     border: 2px solid ${({ theme }) => theme.color.grey};
+    &:hover {
+        border: 2px solid ${({ theme, isListView }) => (isListView ? theme.color.lightOrange : theme.color.grey)};
+        
+    }
+    @media (max-width: 767px) {
+      width: 370px;
+      height: 300px;
+    }
 `;
 
 export const CharacterCardContent = styled.div`
@@ -18,29 +26,41 @@ export const CharacterCardContent = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: 700px;
     border-radius: 10px;
-    padding: 30px 45px;
+    padding: ${({ isListView }) => (isListView ? '15px 22px' : '30px 45px')};;
     background-color: ${({ theme }) => theme.color.lightGrey.rgb};
+    @media (max-width: 767px) {
+      width: 300px;
+    }
 `;
 
 export const CharacterCardTop = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
+`;
+export const CharacterCardBottom = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     width: 100%;
+    margin-top:10px;    
 `;
 
 export const CharacterCardImage = styled.img`
-    width: 220px;
+    width: ${({ isListView }) => (isListView ? '220px' : '40%')};
     border-radius: 10px;
     alt: ${({ alt }) => (alt || 'Image')};
     src: ${({ src }) => (src || 'https://via.placeholder.com/150')};
+    
 `;
 
 export const CharacterCardPersonalData = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    margin-left: 10px;
+    
 
 `;
