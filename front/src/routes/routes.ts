@@ -1,7 +1,7 @@
 import CharactersList from '../pages/charactersList';
 import NotFound from '../components/NotFound';
-import Header from '../components/Header';
-import LogIn from '../components/LogIn';
+import Landing from '../components/Landing';
+import CharacterDetail from '../pages/characterDetail';
 
 export const BASE_URL = '';
 interface Route {
@@ -17,26 +17,18 @@ interface Routes {
 }
 
 const routes: Routes = {
-  error: {
-    url: `/as`,
-    Element: Header,
-  },
-  incidents: {
-    url: `${BASE_URL}/login/`,
-    Element: LogIn,
+  home: {
+    url: BASE_URL,
+    Element: Landing,
   },
   characterList: {
     url: `${BASE_URL}/character/list`,
     Element: CharactersList,
   },
   characterDetail: {
-    url: `${BASE_URL}/character/detail/:id`,
-    Element: Header,
+    url: `${BASE_URL}/character/:id`,
+    Element: CharacterDetail,
   },
-  /* home: {
-    url: BASE_URL,
-    Element: Header,
-  }, */
   notFound: {
     url: '*',
     Element: NotFound,
