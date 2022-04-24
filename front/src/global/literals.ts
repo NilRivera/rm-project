@@ -4,11 +4,14 @@ const literals = {
   email: 'Email',
   password: 'Password',
   text: 'Text',
-  loading: 'Loading',
+  loading: 'Loading...',
   showPassword: 'Show Password',
   hidePassword: 'Hide Password',
   user: 'user',
-  list: 'list',
+  list: 'List',
+  loadingAlt: 'Loading Morty',
+  landingAlt: 'Landing Ricky Morty',
+  welcome: 'Welcome to the Rick and Morty App',
 };
 
 export default literals;
