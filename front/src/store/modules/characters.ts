@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import Api from '../../services/api';
 
 export const charactersFetch = 'characters/fetch';
@@ -76,23 +77,22 @@ const characterSlice = createSlice({
       })
       .addCase(fetchCharacters.rejected, (state) => {
         state = { ...state, isLoading: false, error: true };
+        toast.error(
+          'Something went wrong while fetching Characters, please try again later',
+          {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          },
+        );
         return state;
       })
       .addCase(fetchCharacter.pending, (state) => {
         state = { ...state, isLoading: true, error: false };
-        return state;
-      })
-      .addCase(fetchCharacter.fulfilled, (state, action) => {
-        state = {
-          ...state,
-          isLoading: false,
-          selectedCharacter: action.payload,
-          error: false,
-        };
-        return state;
-      })
-      .addCase(fetchCharacter.rejected, (state) => {
-        state = { ...state, isLoading: false, error: true };
         return state;
       });
   },

@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import literals from '../../global/literals';
 
 export const userFetch = 'https://reqres.in/api/login';
@@ -53,6 +54,18 @@ const userSlice = createSlice({
       })
       .addCase(fetchUser.rejected, (state) => {
         state = { ...state, isLoading: false, error: true };
+        toast.error(
+          'Something went wrong while logging in, please try again later',
+          {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          },
+        );
         return state;
       });
   },

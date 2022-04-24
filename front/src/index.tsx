@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import store from './store/configureStore';
 import './index.css';
 import App from './App';
@@ -14,6 +15,7 @@ const Index: React.FunctionComponent = () => (
       <BrowserRouter>
         <App />
       </BrowserRouter>
+      <ToastContainer autoClose={3000} />
     </ThemeProvider>
   </Provider>
 );
