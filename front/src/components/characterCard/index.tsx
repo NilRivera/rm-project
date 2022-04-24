@@ -75,7 +75,7 @@ const CharacterCard = ({ selectedCharacter, isListView }: CharacterProps) => {
           />
           {!isListView && (
           <CharacterCardPersonalData>
-            <CharacterCardPersonalDataFavGroup style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
+            <CharacterCardPersonalDataFavGroup>
               <DetailInfoRow title={isLoading ? load.name : name} name={name} />
               <CharacterFavButton onClick={() => dispatch(isFavorite
                 ? deleteFavorite({ id: Number(id) }) : addFavorite({ id: Number(id) }))}
