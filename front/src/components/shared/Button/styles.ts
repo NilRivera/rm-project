@@ -18,4 +18,11 @@ export const ButtonContainer = styled.button`
     width: ${({ width }) => width || 'auto'};
     height: ${({ height }) => height};
     font-size: ${({ fontSize }) => fontSize || '1em'};
+    margin: ${({ margin }) => margin || '0'};
+    &:hover {
+        border: 1px solid ${({ theme }) => theme.color.red};
+    }
+    &:active {
+        background-color: ${({ theme }) => theme.color.lightOrange};
+    }
 `;

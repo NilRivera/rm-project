@@ -9,10 +9,11 @@ export type ButtonProps = {
     padding?: string;
     underline?: boolean;
     fontSize: string;
+    margin?: string;
 }
 
 const Button = ({
-  text, onClick, width, height, padding, fontSize, underline,
+  text, onClick, width, height, padding, fontSize, underline, margin,
 }:ButtonProps) => (
   <ButtonContainer
     width={width}
@@ -21,6 +22,7 @@ const Button = ({
     underline={underline}
     fontSize={fontSize}
     onClick={onClick}
+    margin={margin}
   >
     {text}
   </ButtonContainer>
