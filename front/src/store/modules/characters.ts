@@ -25,14 +25,6 @@ export const fetchCharacters = createAsyncThunk(charactersFetch, async () => {
   return results;
 });
 
-export const fetchCharacter = createAsyncThunk(
-  characterFetch,
-  async ({ id }: {id:number}) => {
-    const data = await Api.characters.getOne(id);
-    return data;
-  },
-);
-
 const characterSlice = createSlice({
   name: 'characters',
   initialState: iniState as initialStateProps,
@@ -89,10 +81,6 @@ const characterSlice = createSlice({
             progress: undefined,
           },
         );
-        return state;
-      })
-      .addCase(fetchCharacter.pending, (state) => {
-        state = { ...state, isLoading: true, error: false };
         return state;
       });
   },
