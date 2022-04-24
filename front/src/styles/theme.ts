@@ -18,6 +18,7 @@ const theme = {
     small: '60px',
     medium: '70px',
     large: '80px',
+    login: '108px',
   },
   fontSize: {
     small: '0.8em',
