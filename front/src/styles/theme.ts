@@ -7,6 +7,7 @@ const theme = {
     green: '#3AA576',
     lightGrey: { rgb: 'rgb(224, 224, 224, .8)', hex: '#e0e0e0' },
     lightBlue: { rgb: 'rgb(75, 169, 190,.8)', hex: '#51AEC3' },
+    lightOrange: '#E35A5C',
   },
   buttonHeight: {
     small: '30px',
