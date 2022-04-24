@@ -28,7 +28,11 @@ const CharactersList: React.FunctionComponent = () => {
       />
       <CharacterCardContainer>
         {(favFilter ? filteredCharacters : characters).map((element) => (
-          <CharacterCarLink key={`${id}-${element.name}`} to={`/character/${element.id}`} onClick={() => dispatch(selectCharacter({ id: element.id }))}>
+          <CharacterCarLink
+            key={`${id}-${element.name}`}
+            to={`/character/${element.id}`}
+            onClick={() => dispatch(selectCharacter({ id: element.id }))}
+          >
             <CharacterCard selectedCharacter={element} isListView />
           </CharacterCarLink>
         ))}

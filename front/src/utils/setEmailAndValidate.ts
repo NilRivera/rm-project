@@ -1,7 +1,12 @@
 import { debounce } from 'lodash';
 
 export const setEmailAndValidate = debounce(
-  (value: string, setEmail: Function, emailValidation:Function, setIsValid:Function) => {
+  (
+    value: string,
+    setEmail: Function,
+    emailValidation:Function,
+    setIsValid:Function,
+  ) => {
     setEmail(value);
     setIsValid(emailValidation(value));
   },

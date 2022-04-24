@@ -13,7 +13,13 @@ export type ButtonProps = {
 }
 
 const Button = ({
-  text, onClick, width, height, padding, fontSize, underline, margin,
+  text, onClick,
+  width,
+  height,
+  padding,
+  fontSize,
+  underline,
+  margin,
 }:ButtonProps) => (
   <ButtonContainer
     width={width}

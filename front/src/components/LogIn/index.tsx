@@ -55,7 +55,12 @@ const LogIn: React.FunctionComponent = () => {
               isValid={isValid}
               hasValue={email}
               onChange={(event) => {
-                setEmailAndValidate(event.target.value, setEmail, emailValidation, setIsValid);
+                setEmailAndValidate(
+                  event.target.value,
+                  setEmail,
+                  emailValidation,
+                  setIsValid,
+                );
               }}
             />
             <Input

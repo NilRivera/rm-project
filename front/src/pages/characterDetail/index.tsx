@@ -18,9 +18,30 @@ const CharacterDetail: React.FunctionComponent = () => {
     <>
       <CharacterCard selectedCharacter={selectedCharacter} />
       <ButtonGroup>
-        <Button margin="10px 5px" text={literals.previous} fontSize={theme.fontSize.medium} width={theme.buttonWidth.large} height={theme.buttonHeight.medium} onClick={() => dispatch(selectCharacter({ id: selectedCharacter.id - 1 }))} />
-        <Button margin="10px 5px" text={literals.back} fontSize={theme.fontSize.medium} width={theme.buttonWidth.large} height={theme.buttonHeight.medium} onClick={() => navigate(-1)} />
-        <Button margin="10px 5px" text={literals.next} fontSize={theme.fontSize.medium} width={theme.buttonWidth.large} height={theme.buttonHeight.medium} onClick={() => dispatch(selectCharacter({ id: selectedCharacter.id + 1 }))} />
+        <Button
+          margin="10px 5px"
+          text={literals.previous}
+          fontSize={theme.fontSize.medium}
+          width={theme.buttonWidth.large}
+          height={theme.buttonHeight.medium}
+          onClick={() => dispatch(selectCharacter({ id: selectedCharacter.id - 1 }))}
+        />
+        <Button
+          margin="10px 5px"
+          text={literals.back}
+          fontSize={theme.fontSize.medium}
+          width={theme.buttonWidth.large}
+          height={theme.buttonHeight.medium}
+          onClick={() => navigate(-1)}
+        />
+        <Button
+          margin="10px 5px"
+          text={literals.next}
+          fontSize={theme.fontSize.medium}
+          width={theme.buttonWidth.large}
+          height={theme.buttonHeight.medium}
+          onClick={() => dispatch(selectCharacter({ id: selectedCharacter.id + 1 }))}
+        />
       </ButtonGroup>
     </>
   );

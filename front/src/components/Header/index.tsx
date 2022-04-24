@@ -19,8 +19,20 @@ const Header: React.FunctionComponent = () => {
     <HeaderStyle>
       <Logo to="/" />
       <LinkGroup>
-        <CharacterListLink to="/character/list">{literals.list}</CharacterListLink>
-        {user && <LogoutLink to="/" onClick={logOut}>{literals.logOut}</LogoutLink>}
+        <CharacterListLink
+          to="/character/list"
+        >
+          {literals.list}
+
+        </CharacterListLink>
+        {user && (
+        <LogoutLink
+          to="/"
+          onClick={logOut}
+        >
+          {literals.logOut}
+        </LogoutLink>
+        )}
       </LinkGroup>
 
     </HeaderStyle>

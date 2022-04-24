@@ -61,7 +61,8 @@ const CharacterCard = ({ selectedCharacter, isListView }: CharacterProps) => {
     );
   }, [selectedCharacter, characters]);
   const {
-    name, gender, image, status, species, location: { name: locationName }, origin, isFavorite,
+    name, gender, image, status, species,
+    location: { name: locationName }, origin, isFavorite,
   } = isEmpty(selectedCharacter) ? load : selectedCharacter;
   return (
     <CharacterCardContainer background={cardBack} isListView={isListView}>
