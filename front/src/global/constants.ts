@@ -14,3 +14,7 @@ export const load = {
   isFavorite: false,
   image: 'https://rickandmortyapi.com/api/character/avatar/19.jpeg',
 };
+
+export const listPath = '/character/list';
+export const detailPath = '/character/:id';
+export const characterPathliteral = '/character/';

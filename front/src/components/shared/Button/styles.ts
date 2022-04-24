@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ButtonContainer = styled.button`
     background: none;
@@ -12,6 +12,7 @@ export const ButtonContainer = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
     text-decoration: ${({ underline }) => (underline ? 'underline' : 'none')};
     background-color: ${({ theme }) => theme.color.lightGrey.rgb};
     border  : 1px solid ${({ theme }) => theme.color.black};
@@ -19,10 +20,14 @@ export const ButtonContainer = styled.button`
     height: ${({ height }) => height};
     font-size: ${({ fontSize }) => fontSize || '1em'};
     margin: ${({ margin }) => margin || '0'};
+    ${({ disabled }) => !disabled && css`
     &:hover {
         border: 1px solid ${({ theme }) => theme.color.red};
     }
     &:active {
         background-color: ${({ theme }) => theme.color.lightOrange};
     }
+   `}
+    
+    
 `;

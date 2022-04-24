@@ -6,6 +6,7 @@ import {
   HeaderStyle, Logo, LogoutLink, CharacterListLink, LinkGroup,
 } from './styles';
 import literals from '../../global/literals';
+import { listPath } from '../../global/constants';
 
 const Header: React.FunctionComponent = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Header: React.FunctionComponent = () => {
       <Logo to="/" />
       <LinkGroup>
         <CharacterListLink
-          to="/character/list"
+          to={listPath}
         >
           {literals.list}
 

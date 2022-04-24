@@ -1,3 +1,4 @@
+import { detailPath, listPath } from '../global/constants';
 import CharactersList from '../pages/charactersList';
 import NotFound from '../components/NotFound';
 import Landing from '../components/Landing';
@@ -19,11 +20,11 @@ const routes: Routes = {
     Element: Landing,
   },
   characterList: {
-    url: `${BASE_URL}/character/list`,
+    url: `${BASE_URL}${listPath}`,
     Element: CharactersList,
   },
   characterDetail: {
-    url: `${BASE_URL}/character/:id`,
+    url: `${BASE_URL}${detailPath}`,
     Element: CharacterDetail,
   },
   notFound: {

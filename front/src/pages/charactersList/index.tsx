@@ -1,5 +1,6 @@
 import React, { useId, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { characterPathliteral } from '../../global/constants';
 import useCharacters from '../../global/hooks/useCharacters';
 import { selectCharacter } from '../../store/modules/characters';
 import { AppDispatch } from '../../store/configureStore';
@@ -30,7 +31,7 @@ const CharactersList: React.FunctionComponent = () => {
         {(favFilter ? filteredCharacters : characters).map((element) => (
           <CharacterCarLink
             key={`${id}-${element.name}`}
-            to={`/character/${element.id}`}
+            to={`${characterPathliteral}${element.id}`}
             onClick={() => dispatch(selectCharacter({ id: element.id }))}
           >
             <CharacterCard selectedCharacter={element} isListView />

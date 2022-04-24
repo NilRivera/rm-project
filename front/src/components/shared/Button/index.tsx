@@ -10,6 +10,7 @@ export type ButtonProps = {
     underline?: boolean;
     fontSize: string;
     margin?: string;
+    disabled?: boolean;
 }
 
 const Button = ({
@@ -20,6 +21,7 @@ const Button = ({
   fontSize,
   underline,
   margin,
+  disabled,
 }:ButtonProps) => (
   <ButtonContainer
     width={width}
@@ -29,6 +31,7 @@ const Button = ({
     fontSize={fontSize}
     onClick={onClick}
     margin={margin}
+    disabled={disabled}
   >
     {text}
   </ButtonContainer>
