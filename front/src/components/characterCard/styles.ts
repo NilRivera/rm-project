@@ -43,7 +43,6 @@ export const CharacterCardTop = styled.div`
 export const CharacterCardBottom = styled.div`
     display: flex;
     justify-content: space-around;
-    align-items: center;
     width: 100%;
     margin-top:10px;    
 `;
@@ -61,6 +60,30 @@ export const CharacterCardPersonalData = styled.div`
     flex-direction: column;
     justify-content: space-around;
     margin-left: 10px;
-    
+`;
 
+export const CharacterCardPersonalDataFavGroup = styled.div`
+    display:flex; 
+    align-items: center; 
+    justify-content: space-around; 
+`;
+
+export const CharacterFavButton = styled.button`
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    display: flex;
+    align-items: center;
+`;
+
+export const CharacterFavImage = styled.img`
+    width: 30px;
+    margin-left: 5px;
+    alt: ${({ alt }) => (alt || 'Image')};
+    src: ${({ src }) => (src || 'https://via.placeholder.com/150')};
+    
 `;

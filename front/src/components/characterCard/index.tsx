@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { isEmpty } from 'lodash';
 import { useParams } from 'react-router-dom';
-import { selectCharacter, fetchCharacters } from '../../store/modules/characters';
-
+import useCharacters from '../../global/hooks/useCharacters';
+import {
+  selectCharacter, fetchCharacters, addFavorite, deleteFavorite,
+} from '../../store/modules/characters';
 import {
   CharacterCardContainer,
   CharacterCardContent,
@@ -11,10 +13,15 @@ import {
   CharacterCardImage,
   CharacterCardPersonalData,
   CharacterCardBottom,
+  CharacterFavButton,
+  CharacterFavImage,
+  CharacterCardPersonalDataFavGroup,
 } from './styles';
 import DetailInfoRow from '../shared/DetailInfoRow';
 import cardBack from '../../assets/media/cardBack.png';
-import { AppDispatch, RootState } from '../../store/configureStore';
+import fullHeart from '../../assets/media/fullHeart.png';
+import emptyHeart from '../../assets/media/emptyHeart.png';
+import { AppDispatch } from '../../store/configureStore';
 import { loadIfReload } from '../../utils/loadIfReload';
 import { load } from '../../global/constants';
 
@@ -34,15 +41,15 @@ export type CharacterProps = {
     species:string,
     location:locationProps,
     origin:originProps,
+    isFavorite?: boolean,
   },
   isListView?: boolean,
 }
 
 const CharacterCard = ({ selectedCharacter, isListView }: CharacterProps) => {
-  const { isLoading, characters } = useSelector((state: RootState) => state.characters);
+  const { isLoading, characters } = useCharacters(null, true);
   const { id } = useParams();
   const dispatch: AppDispatch = useDispatch();
-
   useEffect(() => {
     loadIfReload(
       selectedCharacter,
@@ -54,7 +61,7 @@ const CharacterCard = ({ selectedCharacter, isListView }: CharacterProps) => {
     );
   }, [selectedCharacter, characters]);
   const {
-    name, gender, image, status, species, location: { name: locationName }, origin,
+    name, gender, image, status, species, location: { name: locationName }, origin, isFavorite,
   } = isEmpty(selectedCharacter) ? load : selectedCharacter;
   return (
     <CharacterCardContainer background={cardBack} isListView={isListView}>
@@ -67,7 +74,14 @@ const CharacterCard = ({ selectedCharacter, isListView }: CharacterProps) => {
           />
           {!isListView && (
           <CharacterCardPersonalData>
-            <DetailInfoRow title={isLoading ? load.name : name} name={name} />
+            <CharacterCardPersonalDataFavGroup style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
+              <DetailInfoRow title={isLoading ? load.name : name} name={name} />
+              <CharacterFavButton onClick={() => dispatch(isFavorite
+                ? deleteFavorite({ id: Number(id) }) : addFavorite({ id: Number(id) }))}
+              >
+                <CharacterFavImage src={isFavorite ? fullHeart : emptyHeart} alt="" />
+              </CharacterFavButton>
+            </CharacterCardPersonalDataFavGroup>
             <DetailInfoRow text={isLoading ? load.gender : gender} title="Gender" />
             <DetailInfoRow text={isLoading ? load.status : status} title="Status" status={status} />
             <DetailInfoRow text={isLoading ? load.species : species} title="Species" />
@@ -77,6 +91,9 @@ const CharacterCard = ({ selectedCharacter, isListView }: CharacterProps) => {
         {isListView && (
         <CharacterCardBottom>
           <DetailInfoRow text={isLoading ? load.name : name} title="Name" />
+          <CharacterFavButton>
+            <CharacterFavImage src={isFavorite ? fullHeart : emptyHeart} alt="" />
+          </CharacterFavButton>
         </CharacterCardBottom>
         )}
         {!isListView && (
