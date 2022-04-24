@@ -51,7 +51,7 @@ const LogIn: React.FunctionComponent = () => {
           <InputGroup>
             <Input
               placeholder={literals.email}
-              type="email"
+              type={literals.email.toLowerCase()}
               isValid={isValid}
               hasValue={email}
               onChange={(event) => {
@@ -69,16 +69,16 @@ const LogIn: React.FunctionComponent = () => {
           <Button
             text={showPassword ? literals.hidePassword : literals.showPassword}
             fontSize={theme.fontSize.small}
-            width={theme.buttonWidth.large}
-            height={theme.buttonHeight.medium}
+            width={theme.buttonWidth.login}
+            height={theme.buttonHeight.large}
             padding="15px 10px"
             onClick={() => togglePassword()}
           />
           <Button
             text={literals.logIn}
             fontSize={theme.fontSize.medium}
-            width={theme.buttonWidth.large}
-            height={theme.buttonHeight.medium}
+            width={theme.buttonWidth.login}
+            height={theme.buttonHeight.large}
             padding="15px 10px"
             onClick={() => submitLogIn()}
           />
