@@ -1,28 +1,29 @@
 import React from 'react';
-import { SpanInfo, SpanTitle, DetailInfoGroup } from './styles';
+import {
+  SpanInfo, SpanTitle, DetailInfoGroup, TextGroup,
+} from './styles';
 
 export type DetailInfoRowProps = {
     text?: any;
-    title: string;
+    title?: string;
     status?: string;
-    name?: boolean;
+    name?: string;
 }
 
 const DetailInfoRow = ({
   text, title, status, name,
 }:DetailInfoRowProps) => (
   <DetailInfoGroup name={name}>
-    <SpanTitle>
+    <SpanTitle name={name}>
       {title}
-
     </SpanTitle>
-    <div>
+    <TextGroup>
       {text && (
         <SpanInfo status={status} title={title}>
           {text}
         </SpanInfo>
       )}
-    </div>
+    </TextGroup>
   </DetailInfoGroup>
 
 );
