@@ -4,7 +4,7 @@ import { isEmpty } from 'lodash';
 import { fetchCharacters } from '../../store/modules/characters';
 import { AppDispatch, RootState } from '../../store/configureStore';
 
-export const useCharacters = (initialLoad: boolean = false) => {
+const useCharacters = (user:string | null = '') => {
   const dispatch: AppDispatch = useDispatch();
   const {
     isLoading, error, characters, selectedCharacter,
@@ -12,10 +12,10 @@ export const useCharacters = (initialLoad: boolean = false) => {
     (state: RootState) => state.characters,
   );
   useEffect(() => {
-    if (!isLoading && !error && isEmpty(characters)) {
+    if (!isEmpty(user) && !isLoading && !error && isEmpty(characters)) {
       dispatch(fetchCharacters());
     }
-  }, [initialLoad, isLoading, dispatch, error]);
+  }, [isLoading, dispatch, error]);
   return {
     isLoading,
     error,

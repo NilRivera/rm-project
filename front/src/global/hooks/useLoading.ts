@@ -2,12 +2,12 @@ import useCharacters from './useCharacters';
 import useUser from './useUser';
 
 export function useLoading() {
-  const { isLoading: competitionsLoading } = useUser();
-  const { isLoading: meLoading } = useCharacters();
+  const { isLoading: userLoading } = useUser();
+  const { isLoading: charactersLoading } = useCharacters();
 
   return {
     loading:
-      competitionsLoading
-      || meLoading,
+    userLoading
+      || charactersLoading,
   };
 }
