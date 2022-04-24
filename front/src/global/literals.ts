@@ -15,6 +15,9 @@ const literals = {
   notFoundAlt: '404 Morty not found',
   favorites: 'Favorite characters',
   normalList: 'All characters',
+  back: 'Back',
+  previous: 'Previous',
+  next: 'Next',
 };
 
 export default literals;
