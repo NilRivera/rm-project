@@ -1,23 +1,17 @@
 import React from 'react';
+import literals from '../../global/literals';
+import loginIcon from '../../assets/media/logInIcon.png';
+import { LoadingImage, LoadingLayout, LoadingTitle } from './styles';
 
 type spinner = {
     loading: boolean;
 }
-const LoadingSpinner: any = ({ loading }: spinner) => {
-  const a = 0;
-  console.log('loading', loading);
-  console.log(a);
-  return (
-
-    loading && (
-    <div style={{
-      backgroundColor: 'red', position: 'absolute', width: '100vw', height: '100vh', opacity: 0.5,
-    }}
-    >
-      asdasdsad
-    </div>
-    )
-
-  );
-};
+const LoadingSpinner: any = ({ loading }: spinner) => (
+  loading && (
+    <LoadingLayout>
+      <LoadingImage src={loginIcon} alt={literals.loadingAlt} />
+      <LoadingTitle>{literals.loading}</LoadingTitle>
+    </LoadingLayout>
+  )
+);
 export default LoadingSpinner;
