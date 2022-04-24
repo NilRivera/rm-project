@@ -1,12 +1,13 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/configureStore';
 
-export const userUser = () => {
-  const { isLoading, error } = useSelector((state: RootState) => state.user);
+const useUser = () => {
+  const { isLoading, error, user } = useSelector((state: RootState) => state.user);
   return {
     isLoading,
     error,
+    user,
   };
 };
 
-export default userUser;
+export default useUser;
