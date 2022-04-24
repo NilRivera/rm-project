@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { isEmpty } from 'lodash';
 import { AppDispatch } from '../../store/configureStore';
-import literals from '../../config/literals';
+import literals from '../../global/literals';
 import landscape from '../../assets/media/landscape.png';
 import logInIcon from '../../assets/media/logInIcon.png';
 import {
@@ -14,6 +15,7 @@ import theme from '../../styles/theme';
 import { fetchUser } from '../../store/modules/user';
 import { emailValidation } from '../../utils/emailValidation';
 import { setEmailAndValidate } from '../../utils/setEmailAndValidate';
+import useUser from '../../global/hooks/useUser';
 
 const LogIn: React.FunctionComponent = () => {
   const navigate = useNavigate();
@@ -21,19 +23,21 @@ const LogIn: React.FunctionComponent = () => {
   const [inputType, setInputType] = useState('password');
   const [email, setEmail] = useState('');
   const [isValid, setIsValid] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
   const dispatch: AppDispatch = useDispatch();
+  const { user } = useUser();
   const submitLogIn = () => {
     dispatch((fetchUser({
       email: 'eve.holt@reqres.in',
       password: 'cityslicka',
     })));
-    setIsLoading(true);
-    setTimeout(() => {
-      navigate('/character/list');
-      setIsLoading(false);
-    }, 500);
   };
+
+  useEffect(() => {
+    if (!isEmpty(user)) {
+      navigate('/');
+    }
+  }, [user]);
+
   const togglePassword = () => {
     setShowPassword(!showPassword);
     setInputType(showPassword ? literals.password.toLowerCase() : literals.text.toLowerCase());
@@ -71,7 +75,7 @@ const LogIn: React.FunctionComponent = () => {
             onClick={() => togglePassword()}
           />
           <Button
-            text={isLoading ? literals.loading : literals.logIn}
+            text={literals.logIn}
             fontSize={theme.fontSize.medium}
             width={theme.buttonWidth.large}
             height={theme.buttonHeight.medium}
