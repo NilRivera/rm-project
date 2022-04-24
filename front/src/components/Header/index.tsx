@@ -12,7 +12,7 @@ const Header: React.FunctionComponent = () => {
   const { user } = useGetLocalStorage(literals.user);
   const logOut = () => {
     deleteLocalStorage(literals.user);
-    navigate('/login');
+    navigate('/');
   };
   return (
 
@@ -20,7 +20,7 @@ const Header: React.FunctionComponent = () => {
       <Logo to="/" />
       <LinkGroup>
         <CharacterListLink to="/character/list">{literals.list}</CharacterListLink>
-        {user && <LogoutLink to="/login" onClick={logOut}>{literals.logOut}</LogoutLink>}
+        {user && <LogoutLink to="/" onClick={logOut}>{literals.logOut}</LogoutLink>}
       </LinkGroup>
 
     </HeaderStyle>
