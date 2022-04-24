@@ -4,7 +4,7 @@ import { isEmpty } from 'lodash';
 import { fetchCharacters } from '../../store/modules/characters';
 import { AppDispatch, RootState } from '../../store/configureStore';
 
-const useCharacters = (user:string | null = '') => {
+const useCharacters = (user:string | null = '', update:boolean | null = false) => {
   const dispatch: AppDispatch = useDispatch();
   const {
     isLoading, error, characters, selectedCharacter,
@@ -15,7 +15,7 @@ const useCharacters = (user:string | null = '') => {
     if (!isEmpty(user) && !isLoading && !error && isEmpty(characters)) {
       dispatch(fetchCharacters());
     }
-  }, [isLoading, dispatch, error]);
+  }, [update, isLoading, dispatch, error, characters]);
   return {
     isLoading,
     error,

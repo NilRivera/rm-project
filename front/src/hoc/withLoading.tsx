@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { ReactNode } from 'react';
 import LoadingSpinner from '../components/Loading';
 import { useLoading } from '../global/hooks/useLoading';
