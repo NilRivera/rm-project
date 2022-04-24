@@ -1,33 +1,37 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+import literals from '../../global/literals';
 
-export const userFetch = 'user/fetch';
-
+export const userFetch = 'https://reqres.in/api/login';
 type initialStateProps = {
-  user: {},
+  user: object,
   error: boolean,
   isLoading: boolean,
-  isSignIn: boolean,
 };
 
 const initialState = {
   user: {},
   error: false,
   isLoading: false,
-  isSignIn: false,
 };
 
-export const fetchUser = createAsyncThunk(userFetch, async () => ({
-  id: 2,
-  email: 'Batman',
-}));
+export const fetchUser = createAsyncThunk(userFetch, async ({ email, password }:
+  {email:string, password:string}) => {
+  const { data: { token } } = await axios.post(userFetch, { email, password });
+  return token;
+});
 
 const userSlice = createSlice({
   name: 'user',
   initialState: initialState as initialStateProps,
   reducers: {
     logOut: (state) => {
-      state = { ...state, isSignIn: false, user: {} };
+      state = { ...state, user: {} };
+      return state;
+    },
+    closeError: (state) => {
+      state = { ...state, error: false };
       return state;
     },
   },
@@ -42,9 +46,9 @@ const userSlice = createSlice({
           ...state,
           isLoading: false,
           user: action.payload,
-          isSignIn: true,
           error: false,
         };
+        localStorage.setItem(literals.user, JSON.stringify(action.payload));
         return state;
       })
       .addCase(fetchUser.rejected, (state) => {
