@@ -13,6 +13,8 @@ const literals = {
   landingAlt: 'Landing Ricky Morty',
   welcome: 'Welcome to the Rick and Morty App',
   notFoundAlt: '404 Morty not found',
+  favorites: 'Favorite characters',
+  normalList: 'All characters',
 };
 
 export default literals;
