@@ -1,16 +1,17 @@
 import { useLocation } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import GlobalStyle from './styles/global';
-import './App.css';
 import Router from './routes';
 import Header from './components/Header';
 import LogIn from './components/LogIn';
 import GlobalLayout from './pages/defaultLayout';
-import { useGetLocalStorage } from './utils/useGetLocalStorage';
+import { useGetLocalStorage } from './global/hooks/useGetLocalStorage';
+import withLoading from './hoc/withLoading';
+import literals from './global/literals';
 
 const PrivateRoutes = ({ children }:any):any => {
   const location = useLocation();
-  const { user } = useGetLocalStorage('user', location);
+  const { user } = useGetLocalStorage(literals.user);
   useEffect(() => {}, [location]);
   if (!user) {
     return <GlobalLayout><LogIn /></GlobalLayout>;
@@ -28,4 +29,4 @@ const App: React.FunctionComponent<any> = () => (
   </>
 );
 
-export default App;
+export default withLoading(App);
