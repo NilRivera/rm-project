@@ -7,18 +7,10 @@ export const characterFetch = 'character/fetch';
 
 const iniState = {
   characters: [],
-  selectedCharacter: null,
+  selectedCharacter: {},
   isLoading: false,
   error: false,
 };
-/* type character = {
-  id: number,
-  name: string,
-  status: string,
-  species: string,
-  type: string,
-  gender: string
-} */
 
 type initialStateProps = {
   characters: any,
@@ -46,7 +38,24 @@ const characterSlice = createSlice({
   reducers: {
     selectCharacter(state, { payload }) {
       const characters = JSON.parse(JSON.stringify(state.characters));
-      state = { ...state, selectedCharacter: characters[payload.id] };
+      const selectedListCharacter = characters.find(({ id }) => id === payload.id);
+      state = { ...state, selectedCharacter: selectedListCharacter };
+      return state;
+    },
+    addFavorite(state, { payload }) {
+      const characters = JSON.parse(JSON.stringify(state.characters));
+      let selectedListCharacter = characters.find(({ id }) => id === payload.id);
+      selectedListCharacter = { ...selectedListCharacter, isFavorite: true };
+      characters.splice(selectedListCharacter.id - 1, 1, selectedListCharacter);
+      state = { ...state, characters, selectedCharacter: selectedListCharacter };
+      return state;
+    },
+    deleteFavorite(state, { payload }) {
+      const characters = JSON.parse(JSON.stringify(state.characters));
+      let selectedListCharacter = characters.find(({ id }) => id === payload.id);
+      selectedListCharacter = { ...selectedListCharacter, isFavorite: false };
+      characters.splice(selectedListCharacter.id - 1, 1, selectedListCharacter);
+      state = { ...state, characters, selectedCharacter: selectedListCharacter };
       return state;
     },
   },
@@ -88,5 +97,5 @@ const characterSlice = createSlice({
       });
   },
 });
-export const { selectCharacter } = characterSlice.actions;
+export const { selectCharacter, addFavorite, deleteFavorite } = characterSlice.actions;
 export default characterSlice.reducer;
