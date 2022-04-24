@@ -7,9 +7,6 @@ export const BASE_URL = '';
 interface Route {
   url: string;
   Element: any;
-  name?: string;
-  Icon?: any;
-  shortName?: string;
 }
 
 interface Routes {
