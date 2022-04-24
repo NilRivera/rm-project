@@ -13,11 +13,14 @@ const literals = {
   landingAlt: 'Landing Ricky Morty',
   welcome: 'Welcome to the Rick and Morty App',
   notFoundAlt: '404 Morty not found',
+  notFoundSubtitle: 'Redirecting to homepage...',
   favorites: 'Favorite characters',
   normalList: 'All characters',
   back: 'Back',
   previous: 'Previous',
   next: 'Next',
+  heartAlt: 'heartAlt',
+  loginAlt: 'loginAlt',
 };
 
 export default literals;

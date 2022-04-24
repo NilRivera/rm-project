@@ -47,7 +47,7 @@ const LogIn: React.FunctionComponent = () => {
       <LogInContent>
         <LogInTitle>{literals.logIn}</LogInTitle>
         <LogInForm>
-          <LoginIcon src={logInIcon} alt="LogInIcon" />
+          <LoginIcon src={logInIcon} alt={literals.loginAlt} />
           <InputGroup>
             <Input
               placeholder={literals.email}

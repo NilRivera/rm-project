@@ -3,19 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import literals from '../../global/literals';
 import mortyNotFound from '../../assets/media/mortyNotFound.png';
 
-import { NotFoundContainer, NotFoundTitle, NotFoundImage } from './styles';
+import {
+  NotFoundContainer, NotFoundTitle, NotFoundSubTitle, NotFoundImage,
+} from './styles';
 
 const NotFound: React.FunctionComponent = () => {
   const navigate = useNavigate();
   setTimeout(() => {
     navigate('/');
-  }, 3500);
+  }, 2000);
   return (
     <NotFoundContainer>
       <NotFoundTitle>
         {literals.notFoundAlt}
         !
       </NotFoundTitle>
+      <NotFoundSubTitle>
+        {literals.notFoundSubtitle}
+      </NotFoundSubTitle>
       <NotFoundImage src={mortyNotFound} alt={literals.notFoundAlt} />
     </NotFoundContainer>
   );

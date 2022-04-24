@@ -7,11 +7,19 @@ align-items: center;
 justify-content: center;
 
 `;
+
 export const NotFoundTitle = styled.span`
 font-size: 4rem;
 color: ${({ theme }) => theme.color.white};
 text-align: center;
 `;
+
+export const NotFoundSubTitle = styled.span`
+font-size: 2rem;
+color: ${({ theme }) => theme.color.white};
+text-align: center;
+`;
+
 export const NotFoundImage = styled.img`
 src: ${({ src }) => src};
 width:300px;    

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { isEmpty } from 'lodash';
 import { useParams } from 'react-router-dom';
+import literals from '../../global/literals';
 import useCharacters from '../../global/hooks/useCharacters';
 import {
   selectCharacter, fetchCharacters, addFavorite, deleteFavorite,
@@ -80,7 +81,10 @@ const CharacterCard = ({ selectedCharacter, isListView }: CharacterProps) => {
               <CharacterFavButton onClick={() => dispatch(isFavorite
                 ? deleteFavorite({ id: Number(id) }) : addFavorite({ id: Number(id) }))}
               >
-                <CharacterFavImage src={isFavorite ? fullHeart : emptyHeart} alt="" />
+                <CharacterFavImage
+                  src={isFavorite ? fullHeart : emptyHeart}
+                  alt={literals.heartAlt}
+                />
               </CharacterFavButton>
             </CharacterCardPersonalDataFavGroup>
             <DetailInfoRow text={isLoading ? load.gender : gender} title="Gender" />
@@ -93,7 +97,7 @@ const CharacterCard = ({ selectedCharacter, isListView }: CharacterProps) => {
         <CharacterCardBottom>
           <DetailInfoRow text={isLoading ? load.name : name} title="Name" />
           <CharacterFavButton>
-            <CharacterFavImage src={isFavorite ? fullHeart : emptyHeart} alt="" />
+            <CharacterFavImage src={isFavorite ? fullHeart : emptyHeart} alt={literals.heartAlt} />
           </CharacterFavButton>
         </CharacterCardBottom>
         )}
