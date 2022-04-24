@@ -1,16 +1,15 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useGetLocalStorage } from '../../utils/useGetLocalStorage';
+import { useNavigate } from 'react-router-dom';
+import { useGetLocalStorage } from '../../global/hooks/useGetLocalStorage';
 import { deleteLocalStorage } from '../../utils/deleteLocalStorage';
 import {
   HeaderStyle, Logo, LogoutLink, CharacterListLink, LinkGroup,
 } from './styles';
-import literals from '../../config/literals';
+import literals from '../../global/literals';
 
 const Header: React.FunctionComponent = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { user } = useGetLocalStorage(literals.user, location);
+  const { user } = useGetLocalStorage(literals.user);
   const logOut = () => {
     deleteLocalStorage(literals.user);
     navigate('/login');
