@@ -72,7 +72,7 @@ const LogIn: React.FunctionComponent = () => {
             width={theme.buttonWidth.login}
             height={theme.buttonHeight.large}
             padding="15px 10px"
-            onClick={() => togglePassword()}
+            onClick={togglePassword}
           />
           <Button
             text={literals.logIn}
@@ -80,7 +80,7 @@ const LogIn: React.FunctionComponent = () => {
             width={theme.buttonWidth.login}
             height={theme.buttonHeight.large}
             padding="15px 10px"
-            onClick={() => submitLogIn()}
+            onClick={submitLogIn}
           />
         </ButtonGroup>
       </LogInContent>
