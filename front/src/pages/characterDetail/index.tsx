@@ -1,11 +1,9 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import CharacterCard from '../../components/characterCard';
-import { RootState } from '../../store/configureStore';
+import useCharacters from '../../global/hooks/useCharacters';
+import CharacterCard from '../../components/CharacterCard';
 
-const CharacterDetail = () => {
-  const { selectedCharacter } = useSelector((state: RootState) => state.characters);
-
+const CharacterDetail: React.FunctionComponent = () => {
+  const { selectedCharacter } = useCharacters();
   return (
     <CharacterCard selectedCharacter={selectedCharacter} />
   );
