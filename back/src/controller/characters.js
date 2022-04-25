@@ -33,6 +33,7 @@ const updateCharacter = async (req, res) => {
         new: true,
       },
     );
+    res.status(200);
     res.send(updatedCharacter);
   } catch (error) {
     res.status(500);
