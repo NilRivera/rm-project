@@ -79,7 +79,7 @@ const CharacterCard = ({ selectedCharacter, isListView }: CharacterProps) => {
           <CharacterCardPersonalData>
             <CharacterCardPersonalDataFavGroup>
               <DetailInfoRow title={isLoading ? load.name : name} name={name} />
-              <CharacterFavButton onClick={() => dispatch(updateCharacter({
+              <CharacterFavButton onClick={() => selectedCharacter && dispatch(updateCharacter({
                 id: _id,
                 isFavorite: !isFavorite,
               }))}

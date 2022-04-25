@@ -1,15 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { isEmpty } from 'lodash';
 import useCharacters from '../../global/hooks/useCharacters';
 import CharacterCard from '../../components/CharacterCard';
 import Button from '../../components/shared/Button';
 import literals from '../../global/literals';
+import { characterPathliteral, listPath } from '../../global/constants';
 import theme from '../../styles/theme';
 import { ButtonGroup } from './styles';
 import { AppDispatch } from '../../store/configureStore';
 import { selectCharacter } from '../../store/modules/characters';
-import { characterPathliteral, listPath } from '../../global/constants';
 
 const CharacterDetail: React.FunctionComponent = () => {
   const { selectedCharacter, characters } = useCharacters();
@@ -25,7 +26,7 @@ const CharacterDetail: React.FunctionComponent = () => {
           fontSize={theme.fontSize.medium}
           width={theme.buttonWidth.large}
           height={theme.buttonHeight.medium}
-          disabled={selectedCharacter?.id === 1}
+          disabled={selectedCharacter?.id === 1 || isEmpty(selectedCharacter)}
           onClick={() => {
             dispatch(selectCharacter({ id: selectedCharacter.id - 1 }));
             navigate(`${characterPathliteral}${selectedCharacter.id - 1}`);
@@ -45,7 +46,7 @@ const CharacterDetail: React.FunctionComponent = () => {
           fontSize={theme.fontSize.medium}
           width={theme.buttonWidth.large}
           height={theme.buttonHeight.medium}
-          disabled={selectedCharacter?.id === characters.length - 1}
+          disabled={selectedCharacter?.id === characters.length - 1 || isEmpty(selectedCharacter)}
           onClick={() => {
             dispatch(selectCharacter({ id: selectedCharacter.id + 1 }));
             navigate(`${characterPathliteral}${selectedCharacter.id + 1}`);
