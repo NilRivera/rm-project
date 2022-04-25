@@ -25,7 +25,7 @@ const CharacterDetail: React.FunctionComponent = () => {
           fontSize={theme.fontSize.medium}
           width={theme.buttonWidth.large}
           height={theme.buttonHeight.medium}
-          disabled={selectedCharacter.id === 1}
+          disabled={selectedCharacter?.id === 1}
           onClick={() => {
             dispatch(selectCharacter({ id: selectedCharacter.id - 1 }));
             navigate(`${characterPathliteral}${selectedCharacter.id - 1}`);
@@ -45,7 +45,7 @@ const CharacterDetail: React.FunctionComponent = () => {
           fontSize={theme.fontSize.medium}
           width={theme.buttonWidth.large}
           height={theme.buttonHeight.medium}
-          disabled={selectedCharacter.id === characters.length - 1}
+          disabled={selectedCharacter?.id === characters.length - 1}
           onClick={() => {
             dispatch(selectCharacter({ id: selectedCharacter.id + 1 }));
             navigate(`${characterPathliteral}${selectedCharacter.id + 1}`);

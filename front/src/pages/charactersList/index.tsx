@@ -28,7 +28,7 @@ const CharactersList: React.FunctionComponent = () => {
         text={favFilter ? literals.normalList : literals.favorites}
       />
       <CharacterCardContainer>
-        {(favFilter ? filteredCharacters : characters).map((element) => (
+        {(favFilter ? filteredCharacters : characters)?.map((element) => (
           <CharacterCarLink
             key={`${id}-${element.name}`}
             to={`${characterPathliteral}${element.id}`}

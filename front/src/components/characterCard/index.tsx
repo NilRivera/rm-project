@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import literals from '../../global/literals';
 import useCharacters from '../../global/hooks/useCharacters';
 import {
-  selectCharacter, fetchCharacters, addFavorite, deleteFavorite,
+  selectCharacter, fetchCharacters, updateCharacter,
 } from '../../store/modules/characters';
 import {
   CharacterCardContainer,
@@ -43,6 +43,7 @@ export type CharacterProps = {
     location:locationProps,
     origin:originProps,
     isFavorite?: boolean,
+    _id?:any,
   },
   isListView?: boolean,
 }
@@ -62,8 +63,8 @@ const CharacterCard = ({ selectedCharacter, isListView }: CharacterProps) => {
     );
   }, [selectedCharacter, characters]);
   const {
-    name, gender, image, status, species,
-    location: { name: locationName }, origin, isFavorite,
+    name, gender, image, status, species, _id,
+    location: { name: locationName }, origin, isFavorite = false,
   } = isEmpty(selectedCharacter) ? load : selectedCharacter;
   return (
     <CharacterCardContainer background={cardBack} isListView={isListView}>
@@ -78,8 +79,10 @@ const CharacterCard = ({ selectedCharacter, isListView }: CharacterProps) => {
           <CharacterCardPersonalData>
             <CharacterCardPersonalDataFavGroup>
               <DetailInfoRow title={isLoading ? load.name : name} name={name} />
-              <CharacterFavButton onClick={() => dispatch(isFavorite
-                ? deleteFavorite({ id: Number(id) }) : addFavorite({ id: Number(id) }))}
+              <CharacterFavButton onClick={() => dispatch(updateCharacter({
+                id: _id,
+                isFavorite: !isFavorite,
+              }))}
               >
                 <CharacterFavImage
                   src={isFavorite ? fullHeart : emptyHeart}
