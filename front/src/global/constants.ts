@@ -13,6 +13,7 @@ export const load = {
   },
   isFavorite: false,
   image: 'https://rickandmortyapi.com/api/character/avatar/19.jpeg',
+  _id: '5e9f9c9f9f9f9a0017c8f9f9',
 };
 
 export const listPath = '/character/list';

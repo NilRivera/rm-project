@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { isEmpty } from 'lodash';
+import { setPasswordDebounce } from '../../utils/setPasswordDebounce';
 import { AppDispatch } from '../../store/configureStore';
 import literals from '../../global/literals';
 import landscape from '../../assets/media/landscape.png';
@@ -22,13 +23,14 @@ const LogIn: React.FunctionComponent = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [inputType, setInputType] = useState('password');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isValid, setIsValid] = useState(true);
   const dispatch: AppDispatch = useDispatch();
   const { user } = useUser();
   const submitLogIn = () => {
     dispatch((fetchUser({
-      email: 'eve.holt@reqres.in',
-      password: 'cityslicka',
+      email,
+      password,
     })));
   };
 
@@ -66,7 +68,7 @@ const LogIn: React.FunctionComponent = () => {
             <Input
               placeholder={literals.password}
               type={inputType}
-
+              onChange={(event) => setPasswordDebounce(event.target.value, setPassword)}
             />
           </InputGroup>
         </LogInForm>
@@ -85,6 +87,7 @@ const LogIn: React.FunctionComponent = () => {
             width={theme.buttonWidth.login}
             height={theme.buttonHeight.large}
             padding="15px 10px"
+            disabled={!isValid}
             onClick={submitLogIn}
           />
         </ButtonGroup>

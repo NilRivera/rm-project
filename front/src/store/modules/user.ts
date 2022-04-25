@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import literals from '../../global/literals';
+import Api from '../../services/api';
 
-export const userFetch = 'https://reqres.in/api/login';
+export const userFetch = 'http://localhost:5000/api/login';
 type initialStateProps = {
   user: object,
   error: boolean,
@@ -19,7 +19,7 @@ const initialState = {
 
 export const fetchUser = createAsyncThunk(userFetch, async ({ email, password }:
   {email:string, password:string}) => {
-  const { data: { token } } = await axios.post(userFetch, { email, password });
+  const { data: { token } } = await Api.user.get({ email, password });
   return token;
 });
 
@@ -29,10 +29,6 @@ const userSlice = createSlice({
   reducers: {
     logOut: (state) => {
       state = { ...state, user: {} };
-      return state;
-    },
-    closeError: (state) => {
-      state = { ...state, error: false };
       return state;
     },
   },

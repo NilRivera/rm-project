@@ -1,15 +1,16 @@
 import api from '../common/api-config';
 
-const EP_PATH = '/character/';
+const charactersPath = '/character';
+const characterPath = '/character/characters';
 
 /** Cahracters inforamtion */
 const characters = {
   /** Returns characters information */
-  getOne(params?: number) {
-    return api.get(EP_PATH + params);
+  updateOne({ id, isFavorite }: { id: any; isFavorite: boolean | undefined }) {
+    return api.put(`${charactersPath}/${id}`, { isFavorite });
   },
   getAll() {
-    return api.get(EP_PATH);
+    return api.get(characterPath);
   },
 };
 
