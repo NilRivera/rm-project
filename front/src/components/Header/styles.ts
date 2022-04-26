@@ -13,7 +13,6 @@ export const HeaderStyle = styled.div`
 
 export const LinkGroup = styled.div`
     display: flex;
-    
 `;
 
 export const CharacterListLink = styled(Link)`

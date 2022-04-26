@@ -19,3 +19,10 @@ export const load = {
 export const listPath = '/character/list';
 export const detailPath = '/character/:id';
 export const characterPathliteral = '/character/';
+
+export const gender = 'Gender';
+export const status = 'Status';
+export const species = 'Species';
+export const name = 'Name';
+export const location = 'Location';
+export const origin = 'Origin';

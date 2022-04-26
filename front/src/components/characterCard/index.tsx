@@ -4,6 +4,9 @@ import { isEmpty } from 'lodash';
 import { useParams } from 'react-router-dom';
 import literals from '../../global/literals';
 import useCharacters from '../../global/hooks/useCharacters';
+import * as constants from '../../global/constants';
+import { AppDispatch } from '../../store/configureStore';
+import { loadIfReload } from '../../utils/loadIfReload';
 import {
   selectCharacter, fetchCharacters, updateCharacter,
 } from '../../store/modules/characters';
@@ -22,9 +25,6 @@ import DetailInfoRow from '../shared/DetailInfoRow';
 import cardBack from '../../assets/media/cardBack.png';
 import fullHeart from '../../assets/media/fullHeart.png';
 import emptyHeart from '../../assets/media/emptyHeart.png';
-import { AppDispatch } from '../../store/configureStore';
-import { loadIfReload } from '../../utils/loadIfReload';
-import { load } from '../../global/constants';
 
 export type locationProps = {
   name: string,
@@ -65,20 +65,20 @@ const CharacterCard = ({ selectedCharacter, isListView }: CharacterProps) => {
   const {
     name, gender, image, status, species, _id,
     location: { name: locationName }, origin, isFavorite = false,
-  } = isEmpty(selectedCharacter) ? load : selectedCharacter;
+  } = isEmpty(selectedCharacter) ? constants.load : selectedCharacter;
   return (
     <CharacterCardContainer background={cardBack} isListView={isListView}>
       <CharacterCardContent isListView={isListView}>
         <CharacterCardTop>
           <CharacterCardImage
-            src={isLoading ? load.image : image}
+            src={isLoading ? constants.load.image : image}
             alt={selectedCharacter?.name}
             isListView={isListView}
           />
           {!isListView && (
           <CharacterCardPersonalData>
             <CharacterCardPersonalDataFavGroup>
-              <DetailInfoRow title={isLoading ? load.name : name} name={name} />
+              <DetailInfoRow title={isLoading ? constants.load.name : name} name={name} />
               <CharacterFavButton onClick={() => selectedCharacter && dispatch(updateCharacter({
                 id: _id,
                 isFavorite: !isFavorite,
@@ -90,24 +90,40 @@ const CharacterCard = ({ selectedCharacter, isListView }: CharacterProps) => {
                 />
               </CharacterFavButton>
             </CharacterCardPersonalDataFavGroup>
-            <DetailInfoRow text={isLoading ? load.gender : gender} title="Gender" />
-            <DetailInfoRow text={isLoading ? load.status : status} title="Status" status={status} />
-            <DetailInfoRow text={isLoading ? load.species : species} title="Species" />
+            <DetailInfoRow
+              text={isLoading ? constants.load.gender : gender}
+              title={constants.gender}
+            />
+            <DetailInfoRow
+              text={isLoading ? constants.load.status : status}
+              title={constants.status}
+              status={status}
+            />
+            <DetailInfoRow
+              text={isLoading ? constants.load.species : species}
+              title={constants.species}
+            />
           </CharacterCardPersonalData>
           )}
         </CharacterCardTop>
         {isListView && (
         <CharacterCardBottom>
-          <DetailInfoRow text={isLoading ? load.name : name} title="Name" />
+          <DetailInfoRow
+            text={isLoading ? constants.load.name : name}
+            title={constants.name}
+          />
           <CharacterFavButton>
-            <CharacterFavImage src={isFavorite ? fullHeart : emptyHeart} alt={literals.heartAlt} />
+            <CharacterFavImage
+              src={isFavorite ? fullHeart : emptyHeart}
+              alt={literals.heartAlt}
+            />
           </CharacterFavButton>
         </CharacterCardBottom>
         )}
         {!isListView && (
         <CharacterCardBottom>
-          <DetailInfoRow text={locationName} title="Location" />
-          <DetailInfoRow text={origin.name} title="Origin" />
+          <DetailInfoRow text={locationName} title={constants.location} />
+          <DetailInfoRow text={origin.name} title={constants.origin} />
         </CharacterCardBottom>
         )}
       </CharacterCardContent>
