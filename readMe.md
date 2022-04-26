@@ -111,6 +111,7 @@ Technology (source)
 - Implement test with jest and testing library
 - Refactor the detail component to be easier to read
 - Add token interceptor (it depends on the back)
+- Improve types
 - Implement a register page
 - Finish JWT in the back
 
