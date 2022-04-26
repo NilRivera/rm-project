@@ -8,10 +8,10 @@ I did a Login with a user already created. So you have to introduce the correct 
 
 ### First steps
 
-#### In order to run the Front:
-
 node version: 14.17.0
 yarn version: 1.22.17
+
+#### In order to run the Front:
 
 #### Project setup:
 
@@ -21,8 +21,18 @@ yarn
 
 yarn start
 
+#### In order to run the Front:
 
-### Technologies - libraries used
+#### Project setup:
+
+cd back
+
+yarn
+
+yarn start
+
+
+### Technologies - libraries used in Front
 
 Technology (source) Main reason
 
@@ -36,8 +46,35 @@ Technology (source) Main reason
 
 [Styled-components](https://styled-components.com/) Let you style the web and also include some stats that come from the component.
 
+### Technologies - libraries used in back
 
-### Project structure
+Technology (source)
+
+[chalk](https://www.npmjs.com/package/chalk)
+
+[cors](https://www.npmjs.com/package/cors)
+
+[passport-local](https://www.passportjs.org/packages/passport-local/)
+
+[debug](https://www.npmjs.com/package/debug)
+
+[express](https://expressjs.com/es/starter/installing.html)
+
+[jsonwebtoken](https://jwt.io/)
+
+[mongoose](https://mongoosejs.com/)
+
+[morgan](https://www.npmjs.com/package/morgan)
+
+[node-fetch](https://www.npmjs.com/package/node-fetch)
+
+[nodemon](https://www.npmjs.com/package/nodemon)
+
+[passport](https://www.passportjs.org/)
+
+[passport-jwt](http://www.passportjs.org)
+
+### Project structure front
 
 ```ts
 -front
@@ -55,6 +92,19 @@ Technology (source) Main reason
         -utils // Functionalities that are used in the app
 ```
 
+### Project structure back
+
+```ts
+-front
+    -public
+    -src
+        -config // mongoose - passport  config
+        -controller // Logic for each route function
+        -models // Models of the entities
+        -routes // Routes for the client
+        -utils // Extra functionalities used in the app
+```
+
 
 #### Next steps
 
@@ -62,7 +112,8 @@ Technology (source) Main reason
 - Refactor the detail component to be easier to read
 - Add token interceptor (it depends on the back)
 - Implement a register page
+- Finish JWT in the back
 
 ##### Conclusions
 
-As I am working in a full time job already and I also have things to do in my life, this experience has been a bit hard in terms of time, there are thing that can be improved by time... but it is still a good experience because I have learn a lot during the process and this is my main reason to be a developer.
+As I am working in a full time job already, this experience has been a bit hard in terms of time, there are thing that can be improved by time and also knowledge but it has been a good experience because I have learn a lot during the process and this is my main reason to be a developer.
