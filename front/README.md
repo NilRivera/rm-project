@@ -4,7 +4,7 @@
 
 Project allows you to fetch Ricky and Morty characters from  [R&Rapi](https://rickandmortyapi.com/) and see the detail of each character. You can also have a Favorite list by marking each one as favorite and if its already in fav list, you can remove it too.
 
-As the tech challange asked for, I did a Login with a user already created. So you have to introduce the correct data in order to access the app.
+I did a Login with a user already created. So you have to introduce the correct data in order to access the app.
 
 ### First steps
 
@@ -26,15 +26,15 @@ yarn start
 
 Technology (source) Main reason
 
-Reduxjs/toolkit [Toolkit](https://redux-toolkit.js.org/)  Avoid excessive boilerplate and makes the flux easier to read than redux. Also, it is the first time using it so this makes the prove that it is well designed to be reachable in a short time.
+[Toolkit](https://redux-toolkit.js.org/)  Avoid excessive boilerplate and makes the flux easier to read than redux. Also, it is the first time using it so this makes the prove that it is well designed to be reachable in a short time.
 
-Axios [Axios](https://axios-http.com/) Library well known for all the developers that brings you all you need to make http request to the server/api
+[Axios](https://axios-http.com/) Library well known for all the developers that brings you all you need to make http request to the server/api
 
-Lodash [Lodash](https://lodash.com/) It offers interesting functionalities with different logic, for exemple: Debounce or isEmpty
+[Lodash](https://lodash.com/) It offers interesting functionalities with different logic, for exemple: Debounce or isEmpty
 
-React-toastify [React-toastify](https://www.npmjs.com/package/react-toastify) Had no time to implement the "feedback modal" and this library has all I needed.
+[React-toastify](https://www.npmjs.com/package/react-toastify) Had no time to implement the "feedback modal" and this library has all I needed.
 
-Styled-components [Styled-components](https://styled-components.com/) Let you style the web and also include some stats that come from the component.
+[Styled-components](https://styled-components.com/) Let you style the web and also include some stats that come from the component.
 
 
 ### Project structure
@@ -54,3 +54,15 @@ Styled-components [Styled-components](https://styled-components.com/) Let you st
         -styles // Global style and theme
         -utils // Functionalities that are used in the app
 ```
+
+
+#### Next steps
+
+- Implement test with jest and testing library
+- Refactor the detail component to be easier to read
+- Add token interceptor (it depends on the back)
+- Implement a register page
+
+##### Conclusions
+
+As I am working in a full time job already and I also have things to do in my life, this experience has been a bit hard in terms of time, there are thing that can be improved by time... but it is still a good experience because I have learn a lot during the process and this is my main reason to be a developer.
