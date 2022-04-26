@@ -8,12 +8,12 @@ I did a Login with a user already created. So you have to introduce the correct 
 
 ### First steps
 
-##### In order to run the Front:
+#### In order to run the Front:
 
 node version: 14.17.0
 yarn version: 1.22.17
 
-##### Project setup:
+### Project setup:
 
 cd front
 
