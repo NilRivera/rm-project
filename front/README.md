@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# Rm-project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### App descripction
 
-## Available Scripts
+Project allows you to fetch Ricky and Morty characters from  [R&Rapi](https://rickandmortyapi.com/) and see the detail of each character. You can also have a Favorite list by marking each one as favorite and if its already in fav list, you can remove it too.
 
-In the project directory, you can run:
+As the tech challange asked for, I did a Login with a user already created. So you have to introduce the correct data in order to access the app.
 
-### `npm start`
+### First steps
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+##### In order to run the Front:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+node version: 14.17.0
+yarn version: 1.22.17
 
-### `npm test`
+##### Project setup:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+cd front
 
-### `npm run build`
+yarn
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+yarn start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Technologies - libraries used
 
-### `npm run eject`
+Technology (source) Main reason
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Reduxjs/toolkit [Toolkit](https://redux-toolkit.js.org/)  Avoid excessive boilerplate and makes the flux easier to read than redux. Also, it is the first time using it so this makes the prove that it is well designed to be reachable in a short time.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Axios [Axios](https://axios-http.com/) Library well known for all the developers that brings you all you need to make http request to the server/api
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Lodash [Lodash](https://lodash.com/) It offers interesting functionalities with different logic, for exemple: Debounce or isEmpty
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+React-toastify [React-toastify](https://www.npmjs.com/package/react-toastify) Had no time to implement the "feedback modal" and this library has all I needed.
 
-## Learn More
+Styled-components [Styled-components](https://styled-components.com/) Let you style the web and also include some stats that come from the component.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Project structure
+
+```ts
+-front
+    -public
+    -src
+        -assets // Media for the app
+        -components
+        -global // Hooks, constants, and literals
+        -hoc // Logic that applies all the app
+        -pages // Views of detail and character list
+        -routes // Routes of the app
+        -services // Api configuration and endpoints
+        -store // Modules for each entity and its configuration
+        -styles // Global style and theme
+        -utils // Functionalities that are used in the app
+```
